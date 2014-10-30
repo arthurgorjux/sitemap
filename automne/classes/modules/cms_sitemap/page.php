@@ -118,7 +118,7 @@ class CMS_sitemap_page extends CMS_page
 	function getParentValue($name) {
 		$var = '_'.$name;
 		if (!in_array($name, array('priority', 'included', 'subtree', 'frequency'))) {
-			$this->raiseError("Unknown value to get: ".$name);
+			$this->setError("Unknown value to get: ".$name);
 			return false;
 		}
 		if ($name == 'priority') {
@@ -180,7 +180,7 @@ class CMS_sitemap_page extends CMS_page
 	function setValue($name, $value) {
 		$var = '_'.$name;
 		if (!in_array($name, array('priority', 'included', 'subtree', 'frequency'))) {
-			$this->raiseError("Unknown value to set: ".$name);
+			$this->setError("Unknown value to set: ".$name);
 			return false;
 		}
 		$this->{$var} = $value;
