@@ -99,7 +99,7 @@ class CMS_sitemap_page extends CMS_page
 	function getValue($name, $fromParent = true) {
 		$var = '_'.$name;
 		if (!in_array($name, array('priority', 'included', 'subtree', 'frequency'))) {
-			$this->raiseError("Unknown value to get: ".$name);
+			$this->setError("Unknown value to get: ".$name);
 			return false;
 		}
 		if ($fromParent && !$this->{$var}) {
