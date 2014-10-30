@@ -82,7 +82,7 @@ class CMS_sitemap extends CMS_grandFather
 				$this->_definition = $data["definition_mcs"];
 				$this->_namespaces = $data["namespaces_mcs"];
 			} else {
-				$this->raiseError("Unknown codename :".$codename);
+				$this->setError("Unknown codename :".$codename);
 			}
 		}
 	}
@@ -97,7 +97,7 @@ class CMS_sitemap extends CMS_grandFather
 	function getValue($name) {
 		$var = '_'.$name;
 		if (!in_array($name, array('codename', 'site', 'definition', 'namespaces'))) {
-			$this->raiseError("Unknown value to get: ".$name);
+			$this->setError("Unknown value to get: ".$name);
 			return false;
 		}
 		if ($name == 'definition') {
@@ -117,7 +117,7 @@ class CMS_sitemap extends CMS_grandFather
 	function setValue($name, $value) {
 		$var = '_'.$name;
 		if (!in_array($name, array('codename', 'site', 'definition', 'namespaces'))) {
-			$this->raiseError("Unknown value to set: ".$name);
+			$this->setError("Unknown value to set: ".$name);
 			return false;
 		}
 		if ($name == 'codename' && $this->_codename && $this->_codename != $value) {
@@ -340,12 +340,12 @@ class CMS_sitemap extends CMS_grandFather
 		//generate file
 		$website = CMS_websitesCatalog::getByID($this->getValue('site'));
 		if (!$website || $website->hasError()) {
-			$this->raiseError("Unkown or error in sitemap ".$this->_codename." website.");
+			$this->setError("Unkown or error in sitemap ".$this->_codename." website.");
 			return false;
 		}
 		$root = $website->getRoot();
 		if (!$root || $root->hasError()) {
-			$this->raiseError("Unkown or error in sitemap ".$this->_codename." root page.");
+			$this->setError("Unkown or error in sitemap ".$this->_codename." root page.");
 			return false;
 		}
 		
