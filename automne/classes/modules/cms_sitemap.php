@@ -125,7 +125,7 @@ class CMS_module_CMS_sitemap extends CMS_module
 	  * @return void
 	  * @access public
 	  */
-	function processDailyRoutine() {
+	public static function processDailyRoutine() {
 		$sitemaps = CMS_sitemap::getAll();
 		foreach ($sitemaps as $sitemap) {
 			//regenerate all sitemaps and index if any
