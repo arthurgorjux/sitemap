@@ -382,6 +382,8 @@ class CMS_sitemap extends CMS_grandFather
 		}
 		//end XML content
 		$content .= '</urlset>';
+		// replace &nbsp;
+        $content = str_replace("&nbsp;", " ", $content); 
 		
 		//encode file in utf8
 		if (strtolower(APPLICATION_DEFAULT_ENCODING) != 'utf-8') {
